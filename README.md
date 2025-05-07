@@ -95,7 +95,7 @@
   <button class="button" onclick="startCelebration()">لو خلصت الـ10 ساعات أو أكتر اضغط هنا</button>
 
   <div id="celebration" class="hidden">
-    <h2>أنت بطل حقيقي!</h2>
+    <h2>والله وعملوها الرجالة</h2>
     <audio autoplay>
       <source src="https://dl.sndup.net/k3gq/%D8%AD%D9%84%D9%85%20%D8%A7%D9%84%D8%B9%D9%85%D8%B1.mp3" type="audio/mpeg">
     </audio>
