@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>مفاجأة لكبدة</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5dc;
+      font-family: 'Cairo', sans-serif;
+      overflow-x: hidden;
+    }
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+      animation: float 5s infinite ease-in-out;
+    }
+    .heart.red {
+      background-color: red;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-top: 100px;
+      color: #a52a2a;
+    }
+    button {
+      padding: 12px 24px;
+      background-color: #ffb6c1;
+      border: none;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .confetti {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.postimg.cc/pTz1s0hG/confetti.gif') center center / cover no-repeat;
+    }
+    .video-container, .heart-link, .final-message {
+      display: none;
+      margin-top: 30px;
+    }
+    .heart-link img {
+      width: 80px;
+      cursor: pointer;
+    }
+    .final-message {
+      color: #d6336c;
+      font-size: 24px;
+      padding: 30px;
+      background-color: #fff0f5;
+      border-radius: 50% 50% 50% 50%;
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.6;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+  <div class="content">
+    <h1>إزيك يا كبدة، وحشتني</h1>
+    <button onclick="startSurprise()">لو خلصت الـ١٠ ساعات أو أكتر، اضغط هنا</button>
+
+    <div class="confetti" id="confetti"></div>
+
+    <div class="video-container" id="videoContainer">
+      <video width="300" autoplay controls>
+        <source src="https://firebasestorage.googleapis.com/v0/b/html-surprise.appspot.com/o/helmelomr.mp4?alt=media" type="video/mp4">
+        المتصفح لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+
+    <div class="heart-link" id="heartLink">
+      <p>اضغط على القلب</p>
+      <img src="https://i.postimg.cc/vB1dF1r9/heart.png" alt="قلب" onclick="showMessage()" />
+    </div>
+
+    <div class="final-message" id="finalMessage">
+      فخورة بيك جدًا لأبعد الحدود وبتمنى تستمر على ده، بحبك وهفضل أحبك لآخر العمر.
+    </div>
+  </div>
+
+  <script>
+    const heartsContainer = document.getElementById("hearts");
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      if (Math.random() > 0.5) heart.classList.add("red");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+
+    function startSurprise() {
+      document.getElementById("confetti").style.display = "block";
+      document.getElementById("videoContainer").style.display = "block";
+      document.getElementById("heartLink").style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function showMessage() {
+      document.getElementById("finalMessage").style.display = "flex";
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  </script>
+</body>
+</html>
